@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $formattedContent = $emailFormatter->formatContent($_POST['content'], $_POST['subject']);
                 $sendyUrl = $sendyClient->createCampaign($_POST['subject'], $formattedContent, $emailFormatter);
+                $preview = $emailFormatter->formatContent($_POST['content'], $_POST['subject'] ?? '');
+                $success = $sendyUrl;
                 // header("Location: " . $sendyUrl);
                 // exit;
             } catch (Exception $e) {

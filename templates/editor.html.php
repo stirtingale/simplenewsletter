@@ -18,7 +18,7 @@
 
     <textarea id="editor" name="content"><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
 
-    <div class="buttons">
+    <div class="buttons" style="margin-top: 20px; padding: 10px; background: #f5f5f5;">
         <button type="submit" name="action" value="format">Format</button>
     </div>
 </form>
@@ -33,9 +33,11 @@
                 <input type="hidden" name="subject" value="<?php echo htmlspecialchars($_POST['subject'] ?? ''); ?>">
                 <button type="submit" name="action" value="send">Create in Sendy</button>
             </form>
-            <a href="<?php echo $_ENV['SENDY_URL']; ?>/app?i=<?php echo $_ENV['SENDY_BRAND_ID']; ?>" target="_blank">
-                <button type="button">View Brand</button>
-            </a>
+            <?php if (!empty($success)): ?>
+                <a href="<?php echo $_ENV['SENDY_URL']; ?>/app?i=<?php echo $_ENV['SENDY_BRAND_ID']; ?>" target="_blank">
+                    <button type="button">Success: View Brand</button>
+                </a>
+            <?php endif; ?>
         </div>
         <?php if (isset($sendyResponse)): ?>
             <div class="sendy-response" style="margin-top: 20px; padding: 10px; background: #f5f5f5;">
