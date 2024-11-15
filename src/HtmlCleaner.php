@@ -82,7 +82,7 @@ class HtmlCleaner
         foreach (['ul', 'ol'] as $listType) {
             $lists = $xpath->query("//$listType");
             foreach ($lists as $list) {
-                $list->setAttribute('style', 'margin: 10px 0; padding-left: 20px;');
+                $list->setAttribute('style', 'margin: 0.45em 0; padding-left: 1.325em;');
             }
         }
     }
@@ -92,7 +92,7 @@ class HtmlCleaner
         $paragraphs = $xpath->query("//p");
         foreach ($paragraphs as $p) {
             $style = $p->getAttribute('style');
-            $style .= 'margin: 0 0 1em 0;';
+            $style .= 'margin: 0 0 0.9em 0;';
             $p->setAttribute('style', $style);
         }
     }
@@ -113,9 +113,9 @@ class HtmlCleaner
             'h1' => 'font-size: 32px; font-weight: normal; text-transform:uppercase; margin: 20px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
             'h2' => 'font-size: 28px; font-weight: normal; text-transform:uppercase; margin: 18px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
             'h3' => 'font-size: 24px; font-weight: normal; text-transform:uppercase; margin: 16px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
-            'h4' => 'font-size: 20px; font-weight: normal; text-transform:uppercase; margin: 14px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
-            'h5' => 'font-size: 16px; font-weight: normal; text-transform:uppercase; margin: 12px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
-            'h6' => 'font-size: 14px; font-weight: normal; text-transform:uppercase; margin: 10px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;'
+            'h4' => 'font-size: 20px; font-weight: normal; text-transform:uppercase; margin: 14px 0 0 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h5' => 'font-size: 20px;   line-height:1.2; color:#222; font-weight: 600; text-transform:none; margin: 1.8rem 0 0.45rem 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h6' => 'font-size: 12px; line-height:1; color:#bfbfbf;font-style:normal; font-weight:600; text-transform:uppercase; margin: 0.45rem 0 1.8rem 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;'
         ];
 
         foreach ($headerStyles as $tag => $style) {

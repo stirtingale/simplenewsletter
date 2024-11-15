@@ -84,8 +84,8 @@ class EmailFormatter
         </head>
         <body style="margin: 0; padding: 0; background-color: #ffffff;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; color: #333333;">
-                <img src="{$_ENV['SENDY_LOGO_URL']}" alt="Logo" style="width: 3.6rem; height: auto; display: block; margin-bottom: 62px;">
-                <h1 style="margin:64px 0 32px; color: #ff5538; text-align:center; font-size: 28px; font-weight: 600; letter-spacing:0.02em; text-transform:none; margin: 14px 0; font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;">{$title}</h1>
+                <img src="{$_ENV['SENDY_LOGO_URL']}" alt="Logo" style="width: 3.6rem; height: auto; display: block; margin-bottom: 3.6rem;">
+                <h1 style="margin:3.6rem  0; color: #ff5538; text-align:center; font-size: 24px; font-weight: 600; letter-spacing:0.02em; text-transform:none; font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;">{$title}</h1>
                 {$content}
             </div>
         </body>
