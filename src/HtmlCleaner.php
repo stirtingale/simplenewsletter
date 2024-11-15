@@ -11,6 +11,7 @@ class HtmlCleaner
         $this->cleanupStyles($xpath);
         $this->formatLists($xpath);
         $this->formatLinks($xpath);
+        $this->formatHeaders($xpath);
         $this->formatListItems($xpath);
         $this->formatParagraphs($xpath);
     }
@@ -105,6 +106,26 @@ class HtmlCleaner
             $link->setAttribute('style', $style);
         }
     }
+
+    private function formatHeaders(DOMXPath $xpath)
+    {
+        $headerStyles = [
+            'h1' => 'font-size: 32px; font-weight: normal; text-transform:uppercase; margin: 20px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h2' => 'font-size: 28px; font-weight: normal; text-transform:uppercase; margin: 18px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h3' => 'font-size: 24px; font-weight: normal; text-transform:uppercase; margin: 16px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h4' => 'font-size: 20px; font-weight: normal; text-transform:uppercase; margin: 14px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h5' => 'font-size: 16px; font-weight: normal; text-transform:uppercase; margin: 12px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;',
+            'h6' => 'font-size: 14px; font-weight: normal; text-transform:uppercase; margin: 10px 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;'
+        ];
+
+        foreach ($headerStyles as $tag => $style) {
+            $headers = $xpath->query("//$tag");
+            foreach ($headers as $header) {
+                $header->setAttribute('style', $style);
+            }
+        }
+    }
+
     private function formatListItems(DOMXPath $xpath)
     {
         $listItems = $xpath->query("//li");

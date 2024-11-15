@@ -3,7 +3,7 @@
 
 <head>
     <title>Email Content Formatter</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.2/tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.5.1/tinymce.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;

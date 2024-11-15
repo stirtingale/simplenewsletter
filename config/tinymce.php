@@ -19,8 +19,7 @@ return [
         'media',
         'table',
         'help',
-        'wordcount',
-        'paste'
+        'wordcount'
     ],
     'toolbar' => 'undo redo | formatselect | bold italic | h1 h2 h3 | alignleft aligncenter alignright | bullist numlist | code',
     'formats' => [

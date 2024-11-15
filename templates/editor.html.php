@@ -1,34 +1,46 @@
-<h1>Email Content Formatter</h1>
-<p>Paste your Google Docs content below and click Format to generate an email template.</p>
-
 <form method="post" id="formatter">
-    <textarea id="editor" name="content"></textarea>
+    <div style="margin-bottom: 20px;">
+        <label for="subject">Email Subject:</label>
+        <?php
+        $placeholder = str_replace(
+            ['{date}', '{emoji}'],
+            [date('jS F'), '🌟'],
+            $_ENV['SENDY_TITLE']
+        );
+        ?>
+        <input type="text"
+            id="subject"
+            name="subject"
+            style="width: 100%; padding: 8px; margin-top: 5px;"
+            value="<?php echo htmlspecialchars($_POST['subject'] ?? $placeholder); ?>"
+            placeholder="<?php echo htmlspecialchars($placeholder); ?>">
+    </div>
+
+    <textarea id="editor" name="content"><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
+
     <div class="buttons">
-        <button type="submit">Format for Email</button>
+        <button type="submit" name="action" value="format">Format</button>
     </div>
 </form>
 
 <?php if (!empty($preview)): ?>
-    <h2>Formatted Result</h2>
     <div class="preview-container">
-        <h3>Preview:</h3>
-        <?php echo $preview; ?>
-
-        <h3>HTML Code:</h3>
-        <textarea id="formatted-output"><?php echo htmlspecialchars($preview); ?></textarea>
+        <h3>Formatted Result:</h3>
+        <div id="result"><?php echo $preview; ?></div>
+        <div class="action-buttons" style="margin-top: 20px;display:flex;gap:0.45em;">
+            <form method="post" target="_self">
+                <input type="hidden" name="content" value="<?php echo htmlspecialchars($_POST['content'] ?? ''); ?>">
+                <input type="hidden" name="subject" value="<?php echo htmlspecialchars($_POST['subject'] ?? ''); ?>">
+                <button type="submit" name="action" value="send">Create in Sendy</button>
+            </form>
+            <a href="<?php echo $_ENV['SENDY_URL']; ?>/app?i=<?php echo $_ENV['SENDY_BRAND_ID']; ?>" target="_blank">
+                <button type="button">View Brand</button>
+            </a>
+        </div>
+        <?php if (isset($sendyResponse)): ?>
+            <div class="sendy-response" style="margin-top: 20px; padding: 10px; background: #f5f5f5;">
+                <pre><?php echo htmlspecialchars($sendyResponse); ?></pre>
+            </div>
+        <?php endif; ?>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const output = document.getElementById('formatted-output');
-            const copyBtn = document.createElement('button');
-            copyBtn.textContent = 'Copy HTML';
-            copyBtn.onclick = function() {
-                output.select();
-                document.execCommand('copy');
-                alert('HTML copied to clipboard!');
-            };
-            output.parentNode.insertBefore(copyBtn, output);
-        });
-    </script>
 <?php endif; ?>

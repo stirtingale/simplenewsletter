@@ -97,3 +97,5 @@ Thumbs.db
 !.gitignore
 !.editorconfig
 !.env-example
+
+error_log
