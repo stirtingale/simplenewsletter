@@ -1,6 +1,8 @@
 {
     "require": {
         "symfony/dom-crawler": "^3.4",
-        "symfony/css-selector": "^3.4"
+        "symfony/css-selector": "^3.4",
+        "vlucas/phpdotenv": "^5.3",
+        "guzzlehttp/guzzle": "^7.0"
     }
 }
